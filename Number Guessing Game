@@ -1,0 +1,54 @@
+from random import randint
+""" random module used for randomly chose number """
+EASY_LEVEL=10
+HARD_LEVEL=5
+turns=0
+def check_answer(guess, answer,turns):
+    total_attempt= EASY_LEVEL - turns
+
+    if guess > answer:
+        print("You guessed high")
+        return turns - 1
+    elif guess< answer:
+        print("You guessed low")
+        return turns - 1
+    else:
+        print(f"you guessed right in {total_attempt+1}  attempt ")
+
+
+
+answer=randint(1,10)
+print(answer)
+
+
+def difficulty():
+  LEVEL=(input("Chosse 'easy' or 'hard' "))
+
+  if LEVEL== "easy":
+      return EASY_LEVEL
+  elif LEVEL == "hard":
+      return HARD_LEVEL
+
+
+
+def game():
+    """ game function is created for continuesly functionality and turns count as well"""
+    turns=difficulty()
+    guess=0
+    while guess != answer:
+        print(f"you have {turns} attempts remaining ")
+
+        # while turns ==0:
+        #
+        #     print(" ***you loss*** ")
+        #     exit()
+        guess=int(input("make a guess - "))
+        turns=check_answer(guess, answer,turns)
+        """ 'if' condition is used for break program if its completed """
+        if turns==0:
+            print("you loss")
+            return
+
+
+
+game()
